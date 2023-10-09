@@ -1,0 +1,43 @@
+#:include views/elements.kv
+
+FloatLayout:
+    spacing: '10dp'
+    ElementInput:
+        hint_text: "Nome do lote"
+        helper_text: "Insira o nome do lote"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": 0.5, "center_y": 0.8}
+    ElementInput:
+        hint_text: "Nº de Amostras"
+        helper_text: "Insira o número de amostras"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+    ElementInput:
+        hint_text: "Padrão de Cor"
+        helper_text: "Escolha um padrão de cor"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+    ElementInput:
+        hint_text: "Modelo Preditivo"
+        helper_text: "Escolha um modelo pridivito"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    ElementInput:
+        hint_text: "Informações"
+        helper_text: "Informações adicionais"
+        helper_text_mode: "on_focus"
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+    ElementButton:
+        text: "Subir imagens"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        size_hint: 0.3, 0.05
+        #on_release: app.root.get_screen('sampling').open_image_dialog()
+    ElementButton:
+        text: "Criar Lote"
+        pos_hint: {"center_x": 0.5, "center_y": 0.2}
+        size_hint: 0.3, 0.05
+    ElementBackButton:
+        text: "Voltar"
+        pos_hint: {"center_x": 0.5, "center_y": 0.1}
+        on_release: app.root.current = "menu"
+        size_hint: 0.1, 0.05
