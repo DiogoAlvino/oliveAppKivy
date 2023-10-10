@@ -1,8 +1,7 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
-from kivy.uix.screenmanager import ScreenManager, Screen
-from yoloutils.index import generate_and_overlay_mask
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from sampling import SamplingScreen
 from kivy.core.window import Window
 
@@ -14,7 +13,7 @@ class MainApp(MDApp):
         self.theme_cls.theme_style = "Light"
         self.title = "Olive App"
         
-        self.screen_manager = ScreenManager()
+        self.screen_manager = ScreenManager(transition=NoTransition())
         
         self.menu_screen = Builder.load_file("views/menu.kv")
         menu = Screen(name="menu")
@@ -25,12 +24,6 @@ class MainApp(MDApp):
         self.screen_manager.add_widget(novas_amostragens)
 
         return self.screen_manager
-
-    def iniciar_yolo(self):
-        image_path = "./yoloutils/original.jpg"
-        model_path = "./yoloutils/IAmodel.pt"
-        output_path = "./yoloutils/result.png"
-        generate_and_overlay_mask(image_path, model_path, output_path)
 
     def on_start(self):
         super().on_start()

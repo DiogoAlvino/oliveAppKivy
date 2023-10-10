@@ -1,6 +1,6 @@
 #:include views/elements.kv
 
-FloatLayout:
+MDFloatLayout:
     spacing: '10dp'
     ElementInput:
         hint_text: "Nome do lote"
@@ -19,7 +19,7 @@ FloatLayout:
         pos_hint: {"center_x": 0.5, "center_y": 0.6}
     ElementInput:
         hint_text: "Modelo Preditivo"
-        helper_text: "Escolha um modelo pridivito"
+        helper_text: "Escolha um modelo preditivo"
         helper_text_mode: "on_focus"
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
     ElementInput:
@@ -31,13 +31,14 @@ FloatLayout:
         text: "Subir imagens"
         pos_hint: {"center_x": 0.5, "center_y": 0.3}
         size_hint: 0.3, 0.05
-        #on_release: app.root.get_screen('sampling').open_image_dialog()
+        on_release: app.root.get_screen('sampling').file_chooser()
     ElementButton:
         text: "Criar Lote"
         pos_hint: {"center_x": 0.5, "center_y": 0.2}
         size_hint: 0.3, 0.05
+        on_release: app.root.get_screen('sampling').create_batch()
     ElementBackButton:
         text: "Voltar"
         pos_hint: {"center_x": 0.5, "center_y": 0.1}
-        on_release: app.root.current = "menu"
         size_hint: 0.1, 0.05
+        on_release: app.root.current = "menu"

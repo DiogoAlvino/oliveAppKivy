@@ -1,37 +1,35 @@
-from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
 from kivy.lang import Builder
 from kivy.core.window import Window
-from kivy.uix.filechooser import FileChooser
-from kivy.uix.popup import Popup
-import base64
+from plyer import filechooser
+from yoloutils.index import generate_and_overlay_mask
+import os
 
 Window.size = (350, 600)
+dirname = os.path.dirname(__file__)
 
 class SamplingScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.menu_screen = Builder.load_file("views/sampling.kv")
-        self.screen_manager = ScreenManager()
+        self.screen_manager = ScreenManager(transition=NoTransition())
         self.add_widget(self.menu_screen)
-    """
-    def open_image_dialog(self):
-        file_chooser = FileChooser(filters=["*.jpg", "*.jpeg", "*.png"])
-        file_chooser.bind(on_submit=self.load_image)
+        self.selected_images = []
 
-        popup = Popup(title="Escolha uma imagem", content=file_chooser, size_hint=(0.9, 0.9))
-        popup.open()
+    def file_chooser(self):
+        filechooser.open_file(on_selection=self.selected_image, multiple=True, filters=[("Comma-separated Values", "*.png", "*.jpeg", "*.jpg")])
 
-    def load_image(self, instance, value):
-        selected_file = value[0]
-        # Verifique se um arquivo foi selecionado
-        if selected_file:
-            with open(selected_file, "rb") as file:
-                # Leia o conteúdo do arquivo
-                image_data = file.read()
-                
-                # Codifique o conteúdo em base64
-                base64_data = base64.b64encode(image_data).decode("utf-8")
-                
-                # Imprima o resultado em base64 no console
-                print(base64_data)
-    """
+    def selected_image(self, image):
+        self.selected_images.extend(image)
+        print(self.selected_images)
+    
+    def create_batch(self):
+        if(len(self.selected_images) != 0):
+            self.iniciar_yolo()
+
+    def iniciar_yolo(self):
+        counter = 0
+        for path in self.selected_images:
+            counter += 1
+            output_path = f"{dirname}\\yoloutils\\result{counter}.png"
+            generate_and_overlay_mask(path, output_path)
