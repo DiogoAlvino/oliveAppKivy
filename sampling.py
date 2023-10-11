@@ -31,5 +31,5 @@ class SamplingScreen(Screen):
         counter = 0
         for path in self.selected_images:
             counter += 1
-            output_path = f"{dirname}\\yoloutils\\result{counter}.png"
+            output_path = f"{dirname}\\results\\result{counter}.png"
             generate_and_overlay_mask(path, output_path)
