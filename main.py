@@ -1,7 +1,7 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 from sampling import SamplingScreen
 from kivy.core.window import Window
 
@@ -13,7 +13,7 @@ class MainApp(MDApp):
         self.theme_cls.theme_style = "Light"
         self.title = "Olive App"
         
-        self.screen_manager = ScreenManager(transition=NoTransition())
+        self.screen_manager = ScreenManager(transition=SlideTransition())
         
         self.menu_screen = Builder.load_file("views/menu.kv")
         menu = Screen(name="menu")
