@@ -100,4 +100,5 @@ def olivindex2(files):
         "classes" : [tc0, tc1, tc2, tc3, tc4, tc5, tc6, tc7],
         "percentAmostras" : [pc0, pc1, pc2, pc3, pc4, pc5, pc6, pc7],
         "indiceMaturacao" : float("{:.2f}".format(IM)),
+        "totalAmostras": nt,
     }

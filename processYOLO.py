@@ -12,15 +12,9 @@ dirname = os.path.dirname(__file__)
 class ProcessYOLO(Screen):
     def __init__(self, selected_images=None, **kwargs):
         super().__init__(**kwargs)
-        self.yolo_screen = Builder.load_file("views/processYOLO.kv")
-        self.screen_manager = ScreenManager(transition=NoTransition())
-        self.add_widget(self.yolo_screen)
-        self.classification_results = ""
         self.selected_images = selected_images
-        if selected_images:
-            self.iniciar_yolo()
 
-    def iniciar_yolo(self):
+    def start_yolo(self):
         counter = 0
         results = []
 

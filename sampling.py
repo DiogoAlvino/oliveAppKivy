@@ -2,11 +2,10 @@ from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition
 from kivy.lang import Builder
 from kivy.core.window import Window
 from plyer import filechooser
-from yoloutils.index import generate_and_overlay_mask
 import os
-from scripts.oliveClassification import olivindex2
 from kivy.app import App
 from processYOLO import ProcessYOLO
+from kivy.clock import Clock
 
 Window.size = (350, 600)
 dirname = os.path.dirname(__file__)
@@ -28,10 +27,13 @@ class SamplingScreen(Screen):
     
     def create_batch(self):
         if self.validate_batch():
-            process_yolo = ProcessYOLO(selected_images=self.selected_images, name="processYOLO")
-            self.screen_manager.add_widget(process_yolo)
-            self.screen_manager.current = "processYOLO"
-            return self.screen_manager
+            app = App.get_running_app()
+            app.root.current = "loading"
+            Clock.schedule_once(self.start_yolo_process, 0.2)
+
+    def start_yolo_process(self, dt):
+        process_yolo = ProcessYOLO(selected_images=self.selected_images)
+        process_yolo.start_yolo()
 
     def validate_input(self, user_input, elementID):
         element = self.sampling_screen.ids[elementID]

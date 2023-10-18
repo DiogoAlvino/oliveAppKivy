@@ -1,8 +1,9 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
-from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from sampling import SamplingScreen
+from loading import LoadingScreen
 from kivy.core.window import Window
 
 Window.size = (350, 600)
@@ -13,8 +14,11 @@ class MainApp(MDApp):
         self.theme_cls.theme_style = "Light"
         self.title = "Olive App"
         
-        self.screen_manager = ScreenManager(transition=SlideTransition())
-        
+        self.screen_manager = ScreenManager(transition=NoTransition())
+
+        loading_screen = LoadingScreen(name="loading")
+        self.screen_manager.add_widget(loading_screen)
+
         self.menu_screen = Builder.load_file("views/menu.kv")
         menu = Screen(name="menu")
         menu.add_widget(self.menu_screen)
@@ -27,6 +31,7 @@ class MainApp(MDApp):
 
     def on_start(self):
         super().on_start()
+        self.screen_manager.current = "menu"
 
 if __name__ == '__main__':
     LabelBase.register(name='Rawline_Bold', fn_regular='./assets/rawline-700.ttf')
