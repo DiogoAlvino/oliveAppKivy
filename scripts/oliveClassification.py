@@ -94,7 +94,7 @@ def olivindex2(files):
     pc7 = float("{:.2f}".format(tc7 / nt * 100))
 
     # Índice de maturação
-    IM = (pc1 + 2 * pc2 + 3 * pc3 + 4 * pc4 + 5 * pc5 + 6 * pc6 + 7 * pc7) / nt
+    IM = (pc1 + 2 * pc2 + 3 * pc3 + 4 * pc4 + 5 * pc5 + 6 * pc6 + 7 * pc7) / 100
 
     return {
         "classes" : [tc0, tc1, tc2, tc3, tc4, tc5, tc6, tc7],
