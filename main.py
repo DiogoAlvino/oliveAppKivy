@@ -4,6 +4,7 @@ from kivy.core.text import LabelBase
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from sampling import SamplingScreen
 from loading import LoadingScreen
+from results import ResultScreen
 from kivy.core.window import Window
 
 Window.size = (350, 600)
@@ -16,9 +17,6 @@ class MainApp(MDApp):
         
         self.screen_manager = ScreenManager(transition=NoTransition())
 
-        loading_screen = LoadingScreen(name="loading")
-        self.screen_manager.add_widget(loading_screen)
-
         self.menu_screen = Builder.load_file("views/menu.kv")
         menu = Screen(name="menu")
         menu.add_widget(self.menu_screen)
@@ -26,6 +24,12 @@ class MainApp(MDApp):
         
         novas_amostragens = SamplingScreen(name="sampling")
         self.screen_manager.add_widget(novas_amostragens)
+
+        loading_screen = LoadingScreen(name="loading")
+        self.screen_manager.add_widget(loading_screen)
+
+        result_screen = ResultScreen(name="results")
+        self.screen_manager.add_widget(result_screen)
 
         return self.screen_manager
 

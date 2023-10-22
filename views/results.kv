@@ -1,0 +1,14 @@
+#:include views/elements.kv
+
+MDFloatLayout:
+    spacing: '7dp'
+    MDLabel:
+        id: teste
+        text: "TESTE"
+        halign: "center"
+        theme_text_color: "Error"
+    ElementBackButton:
+        text: "Voltar ao menu"
+        pos_hint: {"center_x": 0.5, "center_y": 0.1}
+        size_hint: 0.1, 0.05
+        on_release: app.root.current = "menu"
