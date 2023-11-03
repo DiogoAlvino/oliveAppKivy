@@ -30,5 +30,4 @@ class ProcessYOLO(Screen):
             self.show_results()
 
     def show_results(self):
-        result_screen = ResultScreen(results=self.classification_results)
-        result_screen.show_results()
+        return ResultScreen(name="results", results=self.classification_results)
