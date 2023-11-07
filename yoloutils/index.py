@@ -76,8 +76,8 @@ def resize_and_center(image, target_size):
     return resized_image
     
 def generate_and_overlay_mask(image_path, output_path):
-    mask_path = f"{dirname}\\mask.png"
-    model_path = f"{dirname}\\IAmodel.pt"
+    mask_path = os.path.join(dirname, "mask.png")
+    model_path = os.path.join(dirname, "IAmodel.pt")
     generate_mask(image_path, model_path, mask_path)
     overlay_mask(image_path, mask_path, output_path)
 
