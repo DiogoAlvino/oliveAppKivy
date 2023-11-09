@@ -37,9 +37,8 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.2.1,kivymd==1.1.1,numpy,Kivy_Garden,pygments,pypiwin32,ultralytics,pyobjus,plyer,imageio,pyjnius==1.5.0,cython==0.29.33,opencv_extras,opencv
-
-# (str) Custom source folders for requirements
+requirements = hostpython3, plyer, python3, kivy==2.2.1, pyjnius, cython==0.29.24, android, pygments,pyobjus==1.2.3,ultralytics==8.0.124,Kivy-Garden==0.1.5,numpy,opencv-python==4.7.0.72,pika==1.3.2,pillow,imageio==2.32.0
+# (str) Custom source folders for requirementspyparsing==3.1.0,pyproject_
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
@@ -67,7 +66,7 @@ orientation = portrait
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+osx.kivy_version = 2.2.1
 
 #
 # Android specific
@@ -95,7 +94,7 @@ fullscreen = 1
 
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-android.permissions = android.permission.INTERNET,CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
+android.permissions = INTERNET,CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
@@ -201,17 +200,17 @@ android.permissions = android.permission.INTERNET,CAMERA,READ_EXTERNAL_STORAGE,W
 #android.add_resources =
 
 # (list) Gradle dependencies to add
-#android.gradle_dependencies =
+android.gradle_dependencies = androidx.appcompat:appcompat:1.1.0
 
 # (bool) Enable AndroidX support. Enable when 'android.gradle_dependencies'
 # contains an 'androidx' package, or any package from Kotlin source.
 # android.enable_androidx requires android.api >= 28
-#android.enable_androidx = True
+android.enable_androidx = True
 
 # (list) add java compile options
 # this can for example be necessary when importing certain java libraries using the 'android.gradle_dependencies' option
 # see https://developer.android.com/studio/write/java8-support for further information
-# android.add_compile_options = "sourceCompatibility = 1.8", "targetCompatibility = 1.8"
+android.add_compile_options = "sourceCompatibility = 1.11", "targetCompatibility = 1.11"
 
 # (list) Gradle repositories to add {can be necessary for some android.gradle_dependencies}
 # please enclose in double quotes 
