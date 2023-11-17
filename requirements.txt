@@ -1,3 +1,4 @@
+altgraph==0.17.4
 appdirs==1.4.4
 build==1.0.3
 buildozer==1.5.0
@@ -8,6 +9,7 @@ contourpy==1.1.0
 cycler==0.11.0
 Cython==0.29.24
 distlib==0.3.7
+docopt==0.6.2
 docutils==0.20.1
 filelock==3.12.2
 fonttools==4.40.0
@@ -18,6 +20,7 @@ Kivy==2.2.1
 Kivy-Garden==0.1.5
 kivymd==1.1.1
 kiwisolver==1.4.4
+macholib==1.16.3
 MarkupSafe==2.1.3
 matplotlib==3.7.1
 mpmath==1.3.0
@@ -29,11 +32,15 @@ pandas==2.0.3
 pexpect==4.8.0
 pika==1.3.2
 Pillow==9.5.0
+pipreqs @ git+https://github.com/bndr/pipreqs.git@68f9b2859d45a60e699839f87b1b9558cd36a329
 platformdirs==3.11.0
 plyer==2.1.0
 psutil==5.9.5
 ptyprocess==0.7.0
 Pygments==2.16.1
+pyinstaller==6.1.0
+pyinstaller-hooks-contrib==2023.10
+pyjnius==1.6.1
 pyobjus==1.2.3
 pyparsing==3.1.0
 pyproject_hooks==1.0.0
@@ -55,3 +62,4 @@ tzdata==2023.3
 ultralytics==8.0.124
 urllib3==2.0.3
 virtualenv==20.24.6
+yarg==0.1.9

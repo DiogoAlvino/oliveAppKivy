@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = OlivyApp
+title = OliveApp
 
 # (str) Package name
-package.name = olivyapp
+package.name = oliveapp
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -29,7 +29,7 @@ source.include_patterns = *.*
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.4
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = hostpython3, plyer, python3, kivy==2.2.1, pyjnius, cython==0.29.24, android, pygments,pyobjus==1.2.3,ultralytics==8.0.124,Kivy-Garden==0.1.5,numpy,opencv-python==4.7.0.72,pika==1.3.2,pillow,imageio==2.32.0
+requirements = hostpython3, plyer, python3, kivy==2.2.1, kivymd==1.1.1, pyjnius, cython==0.29.24, android, pygments,pyobjus==1.2.3,ultralytics==8.0.124,Kivy-Garden==0.1.5,numpy,pika==1.3.2,pillow,imageio==2.32.0,opencv,opencv_extras,tqdm,torch==2.0.1,torchvision==0.15.2
 # (str) Custom source folders for requirementspyparsing==3.1.0,pyproject_
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
@@ -100,7 +100,7 @@ android.permissions = INTERNET,CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORA
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 31
+android.api = 28
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
