@@ -1,17 +1,25 @@
-#:include views/elements.kv
+#:import NoTransition kivy.uix.screenmanager.NoTransition
 
-MDFloatLayout:
-    spacing: '7dp'
-    ElementButton:
-        text: "Nova Amostragem"
-        pos_hint: {"center_x": 0.5, "center_y": 0.65}
-        on_release: app.root.current = "sampling"
-        size_hint: 0.6, 0.08
-    ElementButton:
-        text: "Configurações"
-        pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        size_hint: 0.6, 0.08
-    ElementButton:
-        text: "Resultados"
-        pos_hint: {"center_x": 0.5, "center_y": 0.35}
-        size_hint: 0.6, 0.08
+<MenuScreen>
+    name: "menu"
+    MDFloatLayout:
+        spacing: '7dp'
+        ElementButton:
+            id: newt
+            text: "Nova Amostragem"
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            on_release:
+                root.manager.transition = NoTransition()
+                root.manager.current = "sampling"
+            size_hint: 0.6, 0.08
+        ElementButton:
+            text: "Configurações"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release:
+                root.manager.transition = NoTransition()
+                root.manager.current = "settings"
+            size_hint: 0.6, 0.08
+        ElementButton:
+            text: "Resultados"
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            size_hint: 0.6, 0.08

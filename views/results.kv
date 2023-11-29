@@ -1,48 +1,44 @@
-BoxLayout:
-    orientation: 'vertical'
-    spacing: '7dp'
-    MDLabel:
-        text: "Lote: A"
-    MDLabel:
-        text: "Informações: Fazenda X"
-    MDLabel:
-        text: "Padrão de cor: P"
-    MDLabel:
-        text: "Modelo preditivo: M"
-    MDLabel:
-        text: "N: 100"
-    MDLabel:
-        text: "Indice de Maturação: 3.50"
-    MDLabel:
-        id: N0
-        text: "N0: 0.00"
-    MDLabel:
-        id: N1
-        text: "N1: 0.00"
-    MDLabel:
-        id: N2
-        text: "N2: 0.00"
-    MDLabel:
-        id: N3
-        text: "N3: 0.00"
-    MDLabel:
-        id: N4
-        text: "N4: 0.00"
-    MDLabel:
-        id: N5
-        text: "N5: 0.00"
-    MDLabel:
-        id: N6
-        text: "N6: 0.00"
-    MDLabel:
-        id: N7
-        text: "N7: 0.00"
-    MDLabel:
-        text: "Azeite estimado: 10.5 +- 2.0"
-    MDLabel:
-        text: "Umidade estimada: 11.0 +- 2.5"
-    ElementBackButton:
-        text: "Voltar ao menu"
-        pos_hint: {"center_x": 0.5, "center_y": 0.1}
-        size_hint: 0.5, 0.05
-        on_release: app.root.current = "menu"
+<ResultScreen>
+    name: "results"
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            title: "Resultado"
+            anchor_title: "center"
+            md_bg_color: "white"
+            elevation: .5
+            specific_text_color: "black"
+            left_action_items: [["arrow-left", lambda x: app.go_to_menu()]]
+            right_action_items: [[""]]
+
+        MDBoxLayout:
+            id: results_container
+            orientation: 'vertical'
+            spacing: '7dp'
+            padding: "10dp"
+
+            MDLabel:
+                id: batch_name
+                text: "Lote: ..."
+
+            MDLabel:
+                id: additional_info
+                text: "Informações: ..."
+
+            MDLabel:
+                id: color_scheme
+                text: "Padrão de cor: ..."
+
+            MDLabel:
+                id: prediction_model
+                text: "Modelo preditivo: ..."
+
+            MDLabel:
+                id: total_samples
+                text: ""
+
+            MDLabel:
+                id: maturity_index
+                text: "Indice de Maturação: 3.50"

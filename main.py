@@ -1,41 +1,41 @@
-from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from kivy.uix.screenmanager import NoTransition
+from kivymd.uix.screenmanager import MDScreenManager
+from menu import MenuScreen
 from sampling import SamplingScreen
 from loading import LoadingScreen
 from results import ResultScreen
+from settings import SettingScreen
 from kivy.core.window import Window
+
 
 Window.size = (350, 600)
 
+
 class MainApp(MDApp):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.load_all_kv_files(self.directory)
+        self.screen_manager = MDScreenManager(transition=NoTransition())
 
     def build(self):
         self.theme_cls.theme_style = "Light"
+        self.theme_cls.material_style = "M3"
         self.title = "Olive App"
-        
-        self.screen_manager = ScreenManager(transition=NoTransition())
 
-        self.menu_screen = Builder.load_file("views/menu.kv")
-        menu = Screen(name="menu")
-        menu.add_widget(self.menu_screen)
-        self.screen_manager.add_widget(menu)
-        
-        novas_amostragens = SamplingScreen(name="sampling")
-        self.screen_manager.add_widget(novas_amostragens)
-
-        loading_screen = LoadingScreen(name="loading")
-        self.screen_manager.add_widget(loading_screen)
-
-        result_screen = ResultScreen(name="results")
-        self.screen_manager.add_widget(result_screen)
+        self.screen_manager.add_widget(MenuScreen())
+        self.screen_manager.add_widget(SamplingScreen())
+        self.screen_manager.add_widget(LoadingScreen())
+        self.screen_manager.add_widget(ResultScreen())
+        self.screen_manager.add_widget(SettingScreen())
 
         return self.screen_manager
 
-    def on_start(self):
-        super().on_start()
+    def go_to_menu(self):
         self.screen_manager.current = "menu"
+
 
 if __name__ == '__main__':
     LabelBase.register(name='Rawline_Bold', fn_regular='./assets/rawline-700.ttf')

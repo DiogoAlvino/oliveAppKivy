@@ -2,3 +2,6 @@
 __pycache__/
 /results
 /yoloutils/mask.png
+.idea
+bin
+.buildozer

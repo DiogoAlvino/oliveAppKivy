@@ -1,0 +1,22 @@
+<SettingScreen>
+    name: "settings"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Configurações"
+            anchor_title: "center"
+            md_bg_color: "white"
+            elevation: .5
+            specific_text_color: "black"
+            left_action_items: [["arrow-left", lambda x: app.go_to_menu()]]
+            right_action_items: [[""]]
+
+        MDFloatLayout:
+            ElementBackButton:
+                text: "Padrões de Cor"
+                pos_hint: {"center_x": 0.5, "center_y": 0.65}
+                size_hint: 0.6, 0.08
+            ElementBackButton:
+                text: "Modelos Preditivos"
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                size_hint: 0.6, 0.08
